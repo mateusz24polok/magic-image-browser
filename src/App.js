@@ -1,8 +1,14 @@
-import React from 'react';
+import React from "react";
+import Main from "./components/Main";
 
 function App() {
   return (
-    <h1>Test TEXT</h1>
+    <>
+      <Main>
+        <h1>Test TEXT</h1>
+      </Main>
+    </>
+
   );
 }
 
