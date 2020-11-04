@@ -18,5 +18,5 @@ export const Wrapper = styled.div`
     left:0;
     height:100%;
     width: 100%;
-    background-color: ${({ theme }) => theme.imageFilter};
+    background-color: ${({ theme }) => theme.colors.imageFilter};
 `;
