@@ -1,22 +1,14 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Main from "./components/Main";
-import Form from "./components/Form";
+import MainPage from "./pages/MainPage";
+
 
 function App() {
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
-          <>
-            <Main>
-              <Form
-                title="Unsplash"
-                firstLineDescription="The internet's source of freely-usable-images."
-                secondLineDescription="Powered by creators everywhere"
-              />
-            </Main>
-          </>
+            <MainPage />
         </Route>
         <Route path="/photos">
           <>
