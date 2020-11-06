@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import MainPage from "./pages/MainPage";
+import PhotosPage from "./pages/PhotosPage";
 
 
 function App() {
@@ -8,12 +9,10 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
-            <MainPage />
+          <MainPage />
         </Route>
         <Route path="/photos">
-          <>
-            <div>Photos division</div>
-          </>
+          <PhotosPage />
         </Route>
       </Switch>
       <Route path="/photos/:id">

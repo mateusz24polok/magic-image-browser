@@ -1,7 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
+import createSagaMiddleware from "redux-saga";
+import rootSaga from "./sagas/rootSaga";
 import photoSlice from "./slices/photoSlice";
 import photosSlice from "./slices/photosSlice";
 import querySlice from "./slices/querySlice";
+
+const sagaMiddleware = createSagaMiddleware();
 
 export const store = configureStore({
     reducer: {
@@ -9,5 +13,7 @@ export const store = configureStore({
         photo: photoSlice,
         photos: photosSlice,
     },
-    middleware: [],
+    middleware: [sagaMiddleware],
 });
+
+sagaMiddleware.run(rootSaga);
