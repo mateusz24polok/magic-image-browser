@@ -9,7 +9,18 @@ const photosSlice = createSlice({
     },
     reducers: {
         fetchPhotos: state => {
-            console.log("Starting to fetch photos")
+            state.loading = true;
+        },
+
+        fetchPhotosSuccess: (state, { payload: searchedPhotos }) => {
+            state.loading = false;
+            state.error = false;
+            state.photos = searchedPhotos;
+        },
+
+        fetchPhotosError: state => {
+            state.loading = false;
+            state.error = true;
         },
     },
 });
@@ -19,5 +30,5 @@ export const selectPhotos = state => selectPhotosState(state).photos;
 export const selectPhotosError = state => selectPhotosState(state).error;
 export const selectPhotosLoading = state => selectPhotosState(state).loading;
 
-export const { fetchPhotos } = photosSlice.actions;
+export const { fetchPhotos, fetchPhotosSuccess, fetchPhotosError } = photosSlice.actions;
 export default photosSlice.reducer;
