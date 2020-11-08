@@ -11,4 +11,9 @@ export const GlobalStyle = createGlobalStyle`
     *, ::after, ::before{
         box-sizing: inherit
     }
+
+    body{
+        max-width: 1200px;
+        margin: 0 auto;
+    }
 `;

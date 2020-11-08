@@ -4,5 +4,5 @@ export const StyledTag = styled.div`
     background-color: ${({ theme }) => theme.colors.tag};
     color: ${({ theme }) => theme.colors.tagFont};
     padding: 5px;
-    margin: 0 5px 0 0;
+    margin: 5px 5px 0 0;
 `;

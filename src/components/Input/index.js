@@ -1,18 +1,15 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, {useState} from "react";
 import { StyledInput } from "./styled";
-import { selectQuery, setQuery } from "../../slices/querySlice";
 
 const Input = () => {
-    const dispatch = useDispatch();
-    const query = useSelector(selectQuery);
+    const [inputValue, setInputValue] = useState("");
 
     const onInputChange = (event) => {
-        dispatch(setQuery(event.target.value))
+        setInputValue(event.target.value);
     };
 
     return (
-        <StyledInput onChange={onInputChange} value={query} placeholder="example" />
+        <StyledInput name="photoQuery" onChange={onInputChange} value={inputValue} placeholder="example" />
     );
 };
 

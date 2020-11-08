@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
     max-width: 400px;
+    margin: 40px 0;
 `;
 
 export const Image = styled.img`
@@ -10,6 +11,7 @@ export const Image = styled.img`
 
 
 export const Tags = styled.div`
-    display:flex;
-    margin: 10px 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
 `;

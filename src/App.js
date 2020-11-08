@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import MainPage from "./pages/MainPage";
 import PhotosPage from "./pages/PhotosPage";
+import PhotoPage from "./pages/PhotoPage";
+import { fetchSamplePhotos } from "./slices/photosSlice";
 
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchSamplePhotos());
+  }, [])
+
   return (
     <BrowserRouter>
       <Switch>
@@ -16,9 +25,7 @@ function App() {
         </Route>
       </Switch>
       <Route path="/photos/:id">
-        <>
-          <div>Photo division</div>
-        </>
+        <PhotoPage />
       </Route>
     </BrowserRouter>
 
