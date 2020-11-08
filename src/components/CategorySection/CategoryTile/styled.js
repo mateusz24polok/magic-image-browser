@@ -7,6 +7,7 @@ export const StyledTile = styled.p`
     border: 1px solid gray;
     border-radius: 5px;
     padding: 10px 30px;
+    margin-top: 10px;
 
     &::first-letter{
         text-transform: uppercase;
