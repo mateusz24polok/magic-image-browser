@@ -1,12 +1,13 @@
 import React from "react";
 import Input from "../Input";
+import { StyledForm } from "./styled";
 
 
 const PhotosForm = ({ onFormSubmit }) => {
     return (
-        <form onSubmit={onFormSubmit}>
-            <Input />
-        </form>
+        <StyledForm onSubmit={onFormSubmit}>
+            <Input alternativeStyle />
+        </StyledForm>
     );
 };
 

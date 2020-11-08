@@ -8,6 +8,7 @@ const photosSlice = createSlice({
         page: 1,
         photos: [],
         samplePhotos: [],
+        searchedPhotosCategories: [],
     },
     reducers: {
         fetchPhotos: state => {
@@ -24,10 +25,11 @@ const photosSlice = createSlice({
             state.samplePhotos = samplePhotos;
         },
 
-        fetchPhotosSuccess: (state, { payload: searchedPhotos }) => {
+        fetchPhotosSuccess: (state, { payload: { searchedPhotos, searchedPhotosCategories } }) => {
             state.loading = false;
             state.error = false;
             state.photos = searchedPhotos;
+            state.searchedPhotosCategories = searchedPhotosCategories;
         },
 
         fetchPhotosError: state => {
@@ -51,6 +53,14 @@ export const selectSamplePhotos = state => selectPhotosState(state).samplePhotos
 export const selectPhotosError = state => selectPhotosState(state).error;
 export const selectPhotosLoading = state => selectPhotosState(state).loading;
 export const selectPhotosPage = state => selectPhotosState(state).page;
+export const selectPhotosCategories = state => selectPhotosState(state).searchedPhotosCategories;
 
-export const { fetchPhotos, fetchPhotosSuccess, fetchPhotosError, increasePage, fetchNewPhotos, fetchSamplePhotos, fetchSamplePhotosSuccess } = photosSlice.actions;
+export const {
+    fetchPhotos,
+    fetchPhotosSuccess,
+    fetchPhotosError,
+    increasePage,
+    fetchNewPhotos,
+    fetchSamplePhotos,
+    fetchSamplePhotosSuccess } = photosSlice.actions;
 export default photosSlice.reducer;

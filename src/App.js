@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import MainPage from "./pages/MainPage";
 import PhotosPage from "./pages/PhotosPage";
-import PhotoPage from "./pages/PhotoPage";
 import { fetchSamplePhotos } from "./slices/photosSlice";
 
 
@@ -24,9 +23,6 @@ function App() {
           <PhotosPage />
         </Route>
       </Switch>
-      <Route path="/photos/:id">
-        <PhotoPage />
-      </Route>
     </BrowserRouter>
 
   );

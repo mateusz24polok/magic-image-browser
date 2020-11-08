@@ -1,9 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { Wrapper, Image, Tags } from "./styled";
 import Tag from "./Tag";
+import { fetchPhoto } from "../../slices/photoSlice";
 
 const Photo = ({ imageSrc, imageAlt, tags, id }) => {
+    const dispatch = useDispatch();
     const firstLetterUppercasing = content => {
         return content[0].toUpperCase() + content.slice(1);
     }
@@ -14,15 +16,13 @@ const Photo = ({ imageSrc, imageAlt, tags, id }) => {
                 tags.map(tag => firstLetterUppercasing(tag.title))
             );
         } else {
-            return ["","",""];
+            return ["", "", ""];
         }
     };
 
     return (
         <Wrapper>
-            <Link to={`/photos/${id}`}>
-                <Image src={imageSrc} alt={imageAlt} />
-            </Link>
+            <Image onClick={() => dispatch(fetchPhoto(id))} src={imageSrc} alt={imageAlt} />
             <Tags>
                 <Tag content={`${getTagsContent()[0] ? getTagsContent()[0] : ""} Images`} />
                 <Tag content={`HD ${getTagsContent()[1] ? getTagsContent()[1] : ""} Wallpapers`} />

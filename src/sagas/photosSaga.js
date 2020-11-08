@@ -1,14 +1,25 @@
 import { takeLatest, call, select, put } from "redux-saga/effects";
-import { fetchPhotos, fetchPhotosSuccess, fetchPhotosError, fetchNewPhotos, increasePage, selectPhotosPage, fetchSamplePhotos, fetchSamplePhotosSuccess } from "../slices/photosSlice";
-import { getSearchedPhotos, getSamplePhotos } from "../helpers/apiHelper";
+import {
+    fetchPhotos,
+    fetchPhotosSuccess,
+    fetchPhotosError,
+    fetchNewPhotos,
+    increasePage,
+    selectPhotosPage,
+    fetchSamplePhotos,
+    fetchSamplePhotosSuccess
+} from "../slices/photosSlice";
+import { getSearchedPhotos, getSamplePhotos, getSearchedCollections } from "../helpers/apiHelper";
 import { selectQuery } from "../slices/querySlice";
 
 function* fetchPhotosHandler() {
     try {
         yield console.log("Jesteś w sadze Photos");
         const query = yield select(selectQuery);
+        const collection = yield call(getSearchedCollections, query);
+        yield console.log(collection);
         const searchedPhotos = yield call(getSearchedPhotos, query);
-        yield put(fetchPhotosSuccess(searchedPhotos.results))
+        yield put(fetchPhotosSuccess({ searchedPhotos: searchedPhotos.results, searchedPhotosCategories: Array.from(collection) }))
     } catch (error) {
         yield put(fetchPhotosError());
         console.error(error);
