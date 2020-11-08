@@ -14,7 +14,7 @@ function App() {
   }, [])
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/magic-image-browser">
       <Switch>
         <Route exact path="/">
           <MainPage />
